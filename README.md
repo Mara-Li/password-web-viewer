@@ -1,30 +1,29 @@
-# Password for Web Browsing
+# Password for Web Viewer
 
-This plugin was created following a discussion on the [Obsidian.md forum](https://forum.obsidian.md/t/restriction-option-for-the-web-viewer-plugin/95810/2). I think it's important that parent can control the access to the web browser for their children. This plugin is a first step to add a password to the web browser.
+This plugin was created following a discussion on the [Obsidian.md forum](https://forum.obsidian.md/t/restriction-option-for-the-web-viewer-plugin/95810/2). I think it's important that parents can control access to the web browser for their children. This plugin is a first step in adding a password to the web browser.
 
 > [!warning]
-> If the plugin is disabled, the web browser will be accessible. It is more a proof-of-concept than a real security feature.
+> If the plugin is disabled, the web viewer will be accessible. It is more of a proof-of-concept than a real security feature.
 
 ## Usage
 ### 🚀 Quick start
-First, go into the settings of the plugin and set a password.
-The passwords will be saved encrypted into your configuration folder (`.obsidian`) by default.
+First, go to the plugin settings and set a password. By default, the password will be encrypted and saved in your configuration folder (`.obsidian`).
 
-Then, go into the core plugin and enable the web browser. You will be prompt to enter the password.
+Then, go to the core plugin and enable the web browser. You will be prompted to enter the password.
 
 ### Reset the password
 
-You need to go into the settings of the plugin and set a new password. When clicking on `change password`, you will be prompt to enter the old password. Then, you can set a new password.
+To reset the password, go to the plugin settings and set a new password. When you click on `change password`, you will be prompted to enter the old password. Then, you can set a new password.
 
 > [!warning]
 > This plugin doesn't store the data in `data.json`. Uninstalling the plugin **doesn't** reset the password.
-> If you forgot the password, please contact the author via <a href="mailto:support@mara-li.fr">support@mara-li.fr</a> with the subject `[PASSWORD] Password lost`.
+> If you've forgotten the password, please contact the author via <a href="mailto:support@mara-li.fr">support@mara-li.fr</a> with the subject `[PASSWORD] Password lost`.
 
 
 ## 📥 Installation
 
 - [ ] From Obsidian's community plugins
-- [x] Using BRAT with `https://github.com/Mara-Li/`
+- [x] Using BRAT with `https://github.com/Mara-Li/pin-web-browser`
 - [x] From the release page: 
     - Download the latest release
     - Unzip `pin-web-browser.zip` in `.obsidian/plugins/` path
@@ -35,7 +34,7 @@ You need to go into the settings of the plugin and set a new password. When clic
 ### 🎼 Languages
 
 - [x] English
-- [ ] French
+- [x] French
 
 To add a translation:
 1. Fork the repository

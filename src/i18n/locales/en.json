@@ -1,30 +1,30 @@
 {
-  "changePassword": "Change password",
-  "confirm": "Confirm the password",
-  "correct": "Password correct! The web viewer is now enabled 🎉!",
-  "desc": {
-    "encryption": "To prevent the password from being stored in plain text, it is encrypted using the AES-GCM algorithm.",
-    "explanation": "This plugin allows to open a modal that will ask for a password when you try to enable the new core plugin \"Web Browsing\".",
-    "sendTo": "If you forgot your password, please send an email to",
-    "shouldHeader": "The email should have the header:",
-    "support": "the support.",
-    "uninstall": "Uninstalling the plugin won't remove the password!",
-    "warning": "Warning"
-  },
-  "error": {
-    "empty": "Password cannot be empty.",
-    "firstRun": "No password was configured. Please, set a password first.",
-    "keyNotFound": "CryptoKey not found.",
-    "match": "The passwords doesn't match!",
-    "passwordNotFound": "Error: Password not found.",
-    "wrongPassword": "Password doesn't match: couldn't enable the web viewer."
-  },
-  "firstRun": {
-    "encryption": "Please configure your password. You will need it for changing afterward.",
-    "prompt": "This is the first time you run this plugin.",
-    "title": "First configuration"
-  },
-  "password": "password",
-  "submit": "submit",
-  "success": "Password successfully saved."
+	"changePassword": "Change password",
+	"confirm": "Confirm the password",
+	"correct": "Password correct! The web viewer is now enabled 🎉!",
+	"desc": {
+		"encryption": "To prevent the password from being stored in plain text, it is encrypted using the AES-GCM algorithm.",
+		"explanation": "This plugin allows you to open a modal that will ask for a password when you try to enable the new core plugin \"Web Viewer\".",
+		"sendTo": "If you forgot your password, please send an email to",
+		"shouldHeader": "The email should have the header:",
+		"support": "our support team.",
+		"uninstall": "Uninstalling the plugin won't remove the password!",
+		"warning": "Warning"
+	},
+	"error": {
+		"empty": "Password cannot be empty.",
+		"firstRun": "No password has been configured. Please set a password first.",
+		"keyNotFound": "CryptoKey not found.",
+		"match": "The passwords don't match!",
+		"passwordNotFound": "Error: Password not found.",
+		"wrongPassword": "Password doesn't match: unable to enable the web viewer."
+	},
+	"firstRun": {
+		"encryption": "Please configure your password. You will need it for future changes.",
+		"prompt": "This is the first time you run this plugin.",
+		"title": "First configuration"
+	},
+	"password": "password",
+	"submit": "Submit",
+	"success": "Password successfully saved."
 }
