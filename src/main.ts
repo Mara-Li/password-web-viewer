@@ -33,7 +33,6 @@ export default class PasswordforWebBrowsing extends Plugin {
 			await this.saveSettings();
 		}
 
-		console.log(`💾 Sauvegarde de ${type} dans ${path}`);
 		await this.app.vault.adapter.write(path, content);
 	}
 
@@ -88,13 +87,12 @@ export default class PasswordforWebBrowsing extends Plugin {
 			iv: Array.from(iv),
 		};
 		await this.saveEncryptedPassword(JSON.stringify(data), "password");
-		console.log("Password encrypted and stored");
 	}
 
 	async decryptPassword() {
 		const key = await this.getStoredKey(this.keyPath);
 		if (!key) {
-			console.error("Key not found");
+			console.error(i18next.t("error.keyNotFound"));
 			return null;
 		}
 		try {
@@ -160,14 +158,16 @@ export default class PasswordforWebBrowsing extends Plugin {
 				//@ts-ignore
 				if (plugin.enabled && !this.enableTheBrowserPlugin) {
 					if (this.settings.firstRun) {
-						new Notice("Please set a password for web browsing");
+						new Notice(i18next.t("error.firstRun"));
 						//@ts-ignore
 						plugin.disable();
 						this.app.setting.openTabById(`${this.manifest.id}`);
 					} else {
 						const password = await this.decryptPassword();
 						if (!password) {
-							new Notice("Password not found or incorrect");
+							HtmlNotice(
+								`<span class='pin error'>${i18next.t("error.passwordNotFound")}</span>`
+							);
 							return;
 						}
 						//@ts-ignore
@@ -176,13 +176,11 @@ export default class PasswordforWebBrowsing extends Plugin {
 							async (result) => {
 								if (result !== password) {
 									HtmlNotice(
-										"<span class='pin error'>Password is incorrect. Can't enable the core plugin.</span>"
+										`<span class='pin error'>${i18next.t("error.wrongPassword")}</span>`
 									);
 									return;
 								} else {
-									HtmlNotice(
-										"<span class='pin success'>Password is correct! Enabling the core plugin.</span>"
-									);
+									HtmlNotice(`<span class='pin success'>${i18next.t("correct")}</span>`);
 								}
 							},
 							plugin,
@@ -217,13 +215,11 @@ export default class PasswordforWebBrowsing extends Plugin {
 		const privateDataPath = normalizePath(
 			`${this.app.vault.configDir}/${this.manifest.id}.json`
 		);
-		console.log("Saving private data", data);
 		await this.app.vault.adapter.write(privateDataPath, JSON.stringify(data, null, 2));
 	}
 
 	async loadSettings() {
 		this.settings = await this.loadPrivateData();
-		console.log("Settings loaded", this.settings);
 	}
 
 	async saveSettings() {

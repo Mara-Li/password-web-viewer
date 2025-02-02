@@ -1,5 +1,5 @@
+import i18next from "i18next";
 import { type App, Modal, Setting } from "obsidian";
-
 export default class extends Modal {
 	onSubmit: (result: string) => void;
 	webview: unknown;
@@ -24,7 +24,7 @@ export default class extends Modal {
 
 		new Setting(contentEl).addText((text) => {
 			text
-				.setPlaceholder("Your password")
+				.setPlaceholder(i18next.t("password"))
 				.setValue("")
 				.onChange(async (value) => {
 					this.password = value;
@@ -34,7 +34,7 @@ export default class extends Modal {
 
 		new Setting(contentEl).addButton((button) => {
 			button
-				.setButtonText("Submit")
+				.setButtonText(i18next.t("submit"))
 				.setCta()
 				.onClick(async () => {
 					this.close();

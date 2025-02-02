@@ -1,4 +1,5 @@
 import dedent from "dedent";
+import i18next from "i18next";
 import { type App, PluginSettingTab, Setting, sanitizeHTMLToDom } from "obsidian";
 import HtmlNotice from "./htmlNotice";
 import type { PasswordForWeb } from "./interfaces";
@@ -20,9 +21,9 @@ export class PasswordforWebBrowsingSettingTab extends PluginSettingTab {
 		let confirmPassword = "";
 		setting
 			.addText((text) => {
-				text.setPlaceholder("Your password").onChange(async (value) => {
+				text.setPlaceholder(i18next.t("password")).onChange(async (value) => {
 					if (value.trim().length === 0) {
-						HtmlNotice("<span class='pin error'>Password cannot be empty</span>");
+						HtmlNotice(`<span class='pin error'>${i18next.t("error.empty")}</span>`);
 						return;
 					}
 					password = value;
@@ -30,9 +31,9 @@ export class PasswordforWebBrowsingSettingTab extends PluginSettingTab {
 				text.inputEl.type = "password";
 			})
 			.addText((text) => {
-				text.setPlaceholder("Confirm your password").onChange(async (value) => {
+				text.setPlaceholder(i18next.t("confirm")).onChange(async (value) => {
 					if (value.trim().length === 0) {
-						HtmlNotice("<span class='pin error'>Password cannot be empty</span>");
+						HtmlNotice(`<span class='pin error'>${i18next.t("error.empty")}</span>`);
 						return;
 					}
 					confirmPassword = value;
@@ -45,13 +46,13 @@ export class PasswordforWebBrowsingSettingTab extends PluginSettingTab {
 					.setCta()
 					.onClick(async () => {
 						if (password !== confirmPassword) {
-							HtmlNotice("<span class='pin error'>The passwords don't match</span>");
+							HtmlNotice(`<span class='pin error'>${i18next.t("error.match")}</span>`);
 							return;
 						}
 						if (!password || password.trim().length === 0) {
-							HtmlNotice("<span class='pin error'>Password cannot be empty</span>");
+							HtmlNotice(`<span class='pin error'>${i18next.t("error.empty")}</span>`);
 							return;
-						} else HtmlNotice("<span class='pin success'>Password saved</span>");
+						} else HtmlNotice(`<span class='pin success'>${i18next.t("success")}</span>`);
 						await this.plugin.encryptAndStorePassword(password);
 						if (firstRun) {
 							this.settings.firstRun = false;
@@ -68,12 +69,13 @@ export class PasswordforWebBrowsingSettingTab extends PluginSettingTab {
 
 		containerEl.empty();
 
-		const desc = dedent(`This plugin allows to open a modal that will ask for a password when you try to enable the new core plugin "Web Browsing".<br>To prevent the password from being stored in plain text, it is encrypted using the AES-GCM algorithm.<br>
+		const desc =
+			dedent(`${i18next.t("desc.explanation")}<br>${i18next.t("desc.encryption")}<br>
 		
-		<div data-callout-metadata="" data-callout-fold="" data-callout="warning" class="callout"><div class="callout-title" dir="auto"><div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg></div><div class="callout-title-inner">Warning</div></div><div class="callout-content">
-		<p dir="auto">If you forgot your password, please send an email to <a href="mailto:support@mara-li.fr" target="_blank" rel="noopener nofollow">the support.</a><br>
-		The email should have the header : <code>[PASSWORD] Password lost</code>.<br>
-		<strong>Uninstalling the plugin won't remove the password !</strong></p>
+		<div data-callout-metadata="" data-callout-fold="" data-callout="warning" class="callout"><div class="callout-title" dir="auto"><div class="callout-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg></div><div class="callout-title-inner">${i18next.t("desc.warning")}</div></div><div class="callout-content">
+		<p dir="auto">${i18next.t("desc.sendTo")} <a href="mailto:support@mara-li.fr" target="_blank" rel="noopener nofollow">${i18next.t("desc.support")}</a><br>
+		${i18next.t("desc.shouldHeader")}<code>[PASSWORD] Password lost</code>.<br>
+		<strong>${i18next.t("desc.uninstall")}</strong></p>
 		</div></div>
 	
 `);
@@ -82,10 +84,10 @@ export class PasswordforWebBrowsingSettingTab extends PluginSettingTab {
 
 		if (this.settings.firstRun) {
 			const firstRun = new Setting(containerEl)
-				.setName("First run")
+				.setName(i18next.t("firstRun.title"))
 				.setDesc(
 					sanitizeHTMLToDom(
-						"This is the first time you run this plugin.<br>Please configure your password. You will need it for changing afterward."
+						`${i18next.t("firstRun.prompt")}<br>${i18next.t("firstRun.encryption")}`
 					)
 				)
 				.setHeading();
@@ -93,22 +95,24 @@ export class PasswordforWebBrowsingSettingTab extends PluginSettingTab {
 		} else {
 			new Setting(containerEl).addButton((button) => {
 				button
-					.setButtonText("Change password")
+					.setButtonText(i18next.t("changePassword"))
 					.setClass("change-password")
 					.setWarning()
 					.onClick(async () => {
 						const oldPassword = await this.plugin.decryptPassword();
 						if (!oldPassword) {
-							HtmlNotice("<span class='pin error'>Password not found</span>");
+							HtmlNotice(
+								`<span class='pin error'>${i18next.t("error.passwordNotFound")}</span>`
+							);
 							return;
 						}
 						new InputPassword(this.app, async (password) => {
 							if (password.trim().length === 0) {
-								HtmlNotice("<span class='pin error'>Password cannot be empty</span>");
+								HtmlNotice(`<span class='pin error'>${i18next.t("error.empty")}</span>`);
 								return;
 							}
 							if (oldPassword !== password) {
-								HtmlNotice("<span class='pin error'>The password doesn't match.</span>");
+								HtmlNotice(`<span class='pin error'>${i18next.t("error.match")}</span>`);
 
 								return;
 							} else {
