@@ -1,8 +1,9 @@
 import i18next from "i18next";
-import { Plugin, normalizePath } from "obsidian";
+import { Notice, Plugin, normalizePath } from "obsidian";
+import HtmlNotice from "./htmlNotice";
 import { resources, translationLanguage } from "./i18n";
-
 import { DEFAULT_SETTINGS, type PasswordForWeb } from "./interfaces";
+import InputPassword from "./modal";
 import { PasswordforWebBrowsingSettingTab } from "./settings";
 
 export default class PasswordforWebBrowsing extends Plugin {
@@ -13,6 +14,7 @@ export default class PasswordforWebBrowsing extends Plugin {
 	private passwordPath: string = normalizePath(
 		`${this.app.vault.configDir}/${this.manifest.id}.password.json`
 	);
+	private enableTheBrowserPlugin: boolean = false;
 
 	async saveEncryptedPassword(content: string, type: "key" | "password" = "key") {
 		let path = type === "key" ? this.keyPath : this.passwordPath;
@@ -149,6 +151,47 @@ export default class PasswordforWebBrowsing extends Plugin {
 		});
 
 		this.addSettingTab(new PasswordforWebBrowsingSettingTab(this.app, this));
+		this.registerEvent(
+			this.app.internalPlugins.on("change", async (plugin) => {
+				//@ts-ignore
+				if (plugin.instance.id !== "webviewer") {
+					return;
+				}
+				//@ts-ignore
+				if (plugin.enabled && !this.enableTheBrowserPlugin) {
+					if (this.settings.firstRun) {
+						new Notice("Please set a password for web browsing");
+						//@ts-ignore
+						plugin.disable();
+						this.app.setting.openTabById(`${this.manifest.id}`);
+					} else {
+						const password = await this.decryptPassword();
+						if (!password) {
+							new Notice("Password not found or incorrect");
+							return;
+						}
+						//@ts-ignore
+						new InputPassword(
+							this.app,
+							async (result) => {
+								if (result !== password) {
+									HtmlNotice(
+										"<span class='pin error'>Password is incorrect. Can't enable the core plugin.</span>"
+									);
+									return;
+								} else {
+									HtmlNotice(
+										"<span class='pin success'>Password is correct! Enabling the core plugin.</span>"
+									);
+								}
+							},
+							plugin,
+							password
+						).open();
+					}
+				}
+			})
+		);
 	}
 
 	onunload() {
@@ -160,22 +203,27 @@ export default class PasswordforWebBrowsing extends Plugin {
 			`${this.app.vault.configDir}/${this.manifest.id}.json`
 		);
 		if (!(await this.app.vault.adapter.exists(privateDataPath))) {
-			await this.app.vault.adapter.write(privateDataPath, JSON.stringify({}, null, 2));
-			return {};
+			await this.app.vault.adapter.write(
+				privateDataPath,
+				JSON.stringify(DEFAULT_SETTINGS, null, 2)
+			);
+			return DEFAULT_SETTINGS;
 		}
 		const file = await this.app.vault.adapter.read(privateDataPath);
-		return JSON.parse(file);
+		return JSON.parse(file) as PasswordForWeb;
 	}
 
 	private async savePrivateData(data: PasswordForWeb) {
 		const privateDataPath = normalizePath(
 			`${this.app.vault.configDir}/${this.manifest.id}.json`
 		);
+		console.log("Saving private data", data);
 		await this.app.vault.adapter.write(privateDataPath, JSON.stringify(data, null, 2));
 	}
 
 	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, this.loadPrivateData());
+		this.settings = await this.loadPrivateData();
+		console.log("Settings loaded", this.settings);
 	}
 
 	async saveSettings() {

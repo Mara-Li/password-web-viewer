@@ -1,8 +1,24 @@
 # Password for Web Browsing
 
-Open a password entry when enabling the core web-browser plugin, for (a little) parent control.
+This plugin was created following a discussion on the [Obsidian.md forum](https://forum.obsidian.md/t/restriction-option-for-the-web-viewer-plugin/95810/2). I think it's important that parent can control the access to the web browser for their children. This plugin is a first step to add a password to the web browser.
 
-## ⚙️ Usage
+> [!warning]
+> If the plugin is disabled, the web browser will be accessible. It is more a proof-of-concept than a real security feature.
+
+## Usage
+### 🚀 Quick start
+First, go into the settings of the plugin and set a password.
+The passwords will be saved encrypted into your configuration folder (`.obsidian`) by default.
+
+Then, go into the core plugin and enable the web browser. You will be prompt to enter the password.
+
+### Reset the password
+
+You need to go into the settings of the plugin and set a new password. When clicking on `change password`, you will be prompt to enter the old password. Then, you can set a new password.
+
+> [!warning]
+> This plugin doesn't store the data in `data.json`. Uninstalling the plugin **doesn't** reset the password.
+> If you forgot the password, please contact the author via <a href="mailto:support@mara-li.fr">support@mara-li.fr</a> with the subject `[PASSWORD] Password lost`.
 
 
 ## 📥 Installation
