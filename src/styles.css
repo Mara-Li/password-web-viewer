@@ -1,8 +1,37 @@
-/*
+.pin.error {
+    color: var(--text-error);
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.notice:has(.error) {
+    background-color: rgba(var(--background-modifier-error-rgb), 0.3);
+}
 
-If your plugin does not need CSS, delete this file.
+.password-for-web-browsing text {
+    width: 90%;
+}
 
-*/
+.modal .password-for-web-browsing .setting-item-info {
+    display: none;
+}
+
+.modal .password-for-web-browsing input {
+    width: 100%;
+}
+
+.password-for-web-browsing .success {
+    color: var(--text-success);
+    background-color: rgba(var(--background-modifier-success-rgb), 0.3);
+}
+
+
+.password-for-web-browsing .change-password .setting-item-info{
+    display: none;
+}
+
+.password-for-web-browsing .setting-item:has(.change-password) {
+    border-top: 0;
+}
+
+button.change-password {
+    width: 100%;
+}

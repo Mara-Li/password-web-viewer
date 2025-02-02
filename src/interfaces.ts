@@ -1,9 +1,11 @@
-
-
-export interface PasswordforWebBrowsingSettings {
-	mySetting: string;
+export interface PasswordForWeb {
+	keyPath?: string;
+	passwordPath?: string;
+	firstRun: boolean;
 }
 
-export const DEFAULT_SETTINGS: PasswordforWebBrowsingSettings = {
-	mySetting: "default"
+export const DEFAULT_SETTINGS: PasswordForWeb = {
+	keyPath: undefined,
+	passwordPath: undefined,
+	firstRun: true,
 };
