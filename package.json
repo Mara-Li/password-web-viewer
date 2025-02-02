@@ -1,6 +1,6 @@
 {
   "name": "pin-web-browser",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Open a password entry when enabling the core web-browser plugin, for (a little) parent control.",
   "main": "main.js",
   "private": true,
