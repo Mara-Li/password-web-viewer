@@ -23,10 +23,10 @@ To reset the password, go to the plugin settings and set a new password. When yo
 ## 📥 Installation
 
 - [ ] From Obsidian's community plugins
-- [x] Using BRAT with `https://github.com/Mara-Li/pin-web-browser`
+- [x] Using BRAT with `https://github.com/Mara-Li/password-web-viewer`
 - [x] From the release page: 
     - Download the latest release
-    - Unzip `pin-web-browser.zip` in `.obsidian/plugins/` path
+    - Unzip `password-web-viewer.zip` in `.obsidian/plugins/` path
     - In Obsidian settings, reload the plugin
     - Enable the plugin
 

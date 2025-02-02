@@ -1,9 +1,9 @@
 {
-	"id": "pin-web-browser",
-	"name": "Password for Web Browsing",
+	"id": "password-web-viewer",
+	"name": "Password for Web Viewer",
 	"version": "0.0.1",
 	"minAppVersion": "1.5.12",
-	"description": "Open a password entry when enabling the core web-browser plugin, for (a little) parent control.",
+	"description": "Open a password entry when enabling the core web-viewer plugin, for (a little) parent control.",
 	"author": "Mara-Li",
 	"authorUrl": "https//github.com/Mara-Li",
 	"isDesktopOnly": false
