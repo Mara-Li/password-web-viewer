@@ -1,3 +1,10 @@
+## [0.1.0](https://github.com/Mara-Li/pin-web-browser/compare/0.0.1...0.1.0) (2025-02-02)
+### ⚠ BREAKING CHANGES
+
+* rename the plugin
+
+* rename the plugin ([866c649](https://github.com/Mara-Li/pin-web-browser/commit/866c6499ca8c1870b4b0664e3b7716a855cf5e3a))
+
 ## 0.0.1 (2025-02-02)
 ### Features
 

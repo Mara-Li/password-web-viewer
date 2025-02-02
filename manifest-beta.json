@@ -1,7 +1,7 @@
 {
 	"id": "pin-web-browser",
 	"name": "Password for Web Browsing",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"minAppVersion": "1.5.12",
 	"description": "Open a password entry when enabling the core web-browser plugin, for (a little) parent control.",
 	"author": "Mara-Li",
