@@ -12,7 +12,7 @@ export default class extends Modal {
 		oldPassword?: string
 	) {
 		super(app);
-		this.setTitle("Password for Web Browsing");
+		this.setTitle(i18next.t("input"));
 		this.onSubmit = onSubmit;
 		this.webview = webview;
 		this.oldPassword = oldPassword;

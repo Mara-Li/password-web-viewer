@@ -1,30 +1,31 @@
 {
-	"changePassword": "Changer de mot de passe",
-	"confirm": "Confirmer le mot de passe",
-	"correct": "Mot de passe correct ! La visionneuse web est maintenant activée 🎉 !",
-	"desc": {
-		"encryption": "Pour éviter que le mot de passe ne soit stocké en texte clair, il est crypté à l'aide de l'algorithme AES-GCM.",
-		"explanation": "Ce plugin permet d'ouvrir une fenêtre modale qui demandera un mot de passe lorsque vous essayez d'activer le nouveau plugin « Web Browsing ».",
-		"sendTo": "Si vous avez oublié votre mot de passe, veuillez envoyer un courriel au",
-		"shouldHeader": "L'email doit contenir l'en-tête :",
-		"support": "support.",
-		"uninstall": "La désinstallation du plugin ne supprime pas le mot de passe !",
-		"warning": "Attention"
-	},
-	"error": {
-		"empty": "Le mot de passe ne peut pas être vide.",
-		"firstRun": "Aucun mot de passe n'a été configuré. Veuillez d'abord définir un mot de passe.",
-		"keyNotFound": "CryptoKey introuvable.",
-		"match": "Les mots de passe ne correspondent pas !",
-		"passwordNotFound": "Erreur : Le mot de passe n'a pas été trouvé.",
-		"wrongPassword": "Le mot de passe ne correspond pas : la visionneuse web n'a pas pu être activée."
-	},
-	"firstRun": {
-		"encryption": "Veuillez configurer votre mot de passe. Vous en aurez besoin pour changer par la suite.",
-		"prompt": "C'est la première fois que vous exécutez ce plugin.",
-		"title": "Première configuration"
-	},
-	"password": "mot de passe",
-	"submit": "Valider",
-	"success": "Mot de passe enregistré avec succès."
+  "changePassword": "Changer de mot de passe",
+  "confirm": "Confirmer le mot de passe",
+  "correct": "Mot de passe correct ! La visionneuse web est maintenant activée 🎉 !",
+  "desc": {
+    "encryption": "Pour éviter que le mot de passe ne soit stocké en texte clair, il est crypté à l'aide de l'algorithme AES-GCM.",
+    "explanation": "Ce plugin permet d'ouvrir une fenêtre modale qui demandera un mot de passe lorsque vous essayez d'activer le nouveau plugin « Web Browsing ».",
+    "sendTo": "Si vous avez oublié votre mot de passe, veuillez envoyer un courriel au",
+    "shouldHeader": "L'email doit contenir l'en-tête :",
+    "support": "support.",
+    "uninstall": "La désinstallation du plugin ne supprime pas le mot de passe !",
+    "warning": "Attention"
+  },
+  "error": {
+    "empty": "Le mot de passe ne peut pas être vide.",
+    "firstRun": "Aucun mot de passe n'a été configuré. Veuillez d'abord définir un mot de passe.",
+    "keyNotFound": "CryptoKey introuvable.",
+    "match": "Les mots de passe ne correspondent pas !",
+    "passwordNotFound": "Erreur : Le mot de passe n'a pas été trouvé.",
+    "wrongPassword": "Le mot de passe ne correspond pas : la visionneuse web n'a pas pu être activée."
+  },
+  "firstRun": {
+    "encryption": "Veuillez configurer votre mot de passe. Vous en aurez besoin pour changer par la suite.",
+    "prompt": "C'est la première fois que vous exécutez ce plugin.",
+    "title": "Première configuration"
+  },
+  "input": "Mot de passe pour activer le Web Viewer",
+  "password": "mot de passe",
+  "submit": "Valider",
+  "success": "Mot de passe enregistré avec succès."
 }
