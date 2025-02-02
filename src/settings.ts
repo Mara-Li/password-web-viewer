@@ -1,10 +1,10 @@
 import { type App, PluginSettingTab, Setting } from "obsidian";
-import <%= data.interfaceName %> from "./main";
+import PasswordforWebBrowsing from "./main";
 
-export class <%= data.interfaceName %>SettingTab extends PluginSettingTab {
-	plugin: <%= data.interfaceName %>;
+export class PasswordforWebBrowsingSettingTab extends PluginSettingTab {
+	plugin: PasswordforWebBrowsing;
 
-	constructor(app: App, plugin: <%= data.interfaceName %>) {
+	constructor(app: App, plugin: PasswordforWebBrowsing) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}

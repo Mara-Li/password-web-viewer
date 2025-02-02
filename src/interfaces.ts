@@ -1,9 +1,9 @@
 
 
-export interface <%= data.interfaceName %>Settings {
+export interface PasswordforWebBrowsingSettings {
 	mySetting: string;
 }
 
-export const DEFAULT_SETTINGS: <%= data.interfaceName %>Settings = {
+export const DEFAULT_SETTINGS: PasswordforWebBrowsingSettings = {
 	mySetting: "default"
 };
