@@ -17,7 +17,7 @@ To reset the password, go to the plugin settings and set a new password. When yo
 
 > [!warning]
 > This plugin doesn't store the data in `data.json`. Uninstalling the plugin **doesn't** reset the password.
-> If you've forgotten the password, please contact the author via <a href="mailto:support@mara-li.fr">support@mara-li.fr</a> with the subject `[PASSWORD] Password lost`.
+> If you've forgotten the password, please contact the author via <a href="mailto:support@mara-li.fr">support@mara-li.fr</a> with the subject `[PASSWORD] Password lost`, or contact on discord at @mara__li.
 
 
 ## 📥 Installation
